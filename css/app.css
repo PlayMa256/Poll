@@ -1,0 +1,106 @@
+.perguntas{
+	width:50%;
+	overflow: hidden;
+
+}
+.infos span{
+	display: block;
+}
+.title-section{
+	background:#9BBB59;
+	padding:5px;
+	width: calc(100% - 10px);
+	display: block;
+}
+.explicacao{
+	background: #D8E4BC;
+	color:#4F6228;
+	text-align: center;
+	padding:5px;
+	font-weight: bold;
+	margin-bottom: 12px;
+}
+.perg span{
+	font-weight: bold;
+	font-size:12pt;
+	margin-right:10px;
+	width:250px;
+	display: block;
+	float:left;
+
+
+}
+.perg{
+	margin-bottom:10px;
+}
+.perg,.infos,.classificacao{
+	padding-left:10px;
+}
+.perg input[type="radio"]{
+    vertical-align: baseline;
+}
+.classificacao textarea{
+	width:500px;
+	border:1px solid #333;
+	background: transparent;
+	-webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding:5px;
+}
+
+
+#class{
+	position: relative;
+	width:500px;
+	left:50%;
+	margin-left:-250px;
+	margin-top:20px;
+}
+#class select{
+	border:1px solid #9BBB59;
+}
+#btn-submit{
+		position: relative;
+	background: #0070C0;
+	color:#FFF;
+	font-weight: bold;
+	border:0;
+	padding:10px 20px 10px 20px;
+	width:88px;
+	left:50%;
+	margin-left:-44px;
+	margin-top:40px;
+}
+#btn-submit:hover{
+	background-color:#00518C;
+	cursor:pointer;
+}
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+ 
+.isa_info, .isa_success, .isa_warning, .isa_error {
+margin: 10px 10px;
+padding:12px;
+width: 300px;
+}
+.isa_info {
+    color: #00529B;
+    background-color: #BDE5F8;
+}
+.isa_success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.isa_warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+.isa_error {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+.isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+    margin:10px 22px;
+    font-size:2em;
+    vertical-align:middle;
+}

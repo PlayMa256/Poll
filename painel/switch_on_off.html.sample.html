@@ -1,0 +1,10 @@
+<div class="onoffswitch">
+					        	<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" value="<?php echo $result['id']."|".$result['status'];?>" <?php if($result['status'] == 1){
+					        			echo 'checked="checked"';}else{
+					        				echo 'checked=""';
+					        				} ?>>
+					       			<label class="onoffswitch-label" for="myonoffswitch">
+					            		<span class="onoffswitch-inner"></span>
+					            		<span class="onoffswitch-switch"></span>
+					        		</label>
+    				</div>

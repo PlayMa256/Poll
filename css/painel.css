@@ -1,0 +1,114 @@
+.navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-nav > li > a{
+    font-family: proxima-nova;
+    font-style: normal;
+    font-weight: 100;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: black;
+}
+.conteudo{
+	padding-left:10px;
+}
+.anuncio{
+	text-align: center;
+	width: 400px;
+	position: relative;
+	left:50%;
+	margin-left:-200px;
+	height: 200px;
+	top:50%;
+}
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+ 
+.isa_info, .isa_success, .isa_warning, .isa_error {
+margin: 10px 0px;
+padding:12px;
+width: 450px;
+}
+.isa_info {
+    color: #00529B;
+    background-color: #BDE5F8;
+    wid
+}
+.isa_success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.isa_warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+.isa_error {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+.isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+    margin:10px 22px;
+    font-size:2em;
+    vertical-align:middle;
+}
+.conteudo span{
+	font-size:15pt;
+	display: block;
+}
+.conteudo input[type="text"]{
+	font-weight: normal;
+	padding:3px;
+}
+.tabela, .alerta{
+  margin: 0 auto !important;
+  float: none !important;
+
+}
+.tabela{
+	max-width:1024px;
+}
+.alerta{
+	max-width: 300px;
+	margin-bottom: 10px;
+}
+		    .onoffswitch {
+        position: relative; width: 114px;
+        -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    }
+    .onoffswitch-checkbox {
+        display: none;
+    }
+    .onoffswitch-label {
+        display: block; overflow: hidden; cursor: pointer;
+        border: 2px solid #999999; border-radius: 20px;
+    }
+    .onoffswitch-inner {
+        display: block; width: 200%; margin-left: -100%;
+        transition: margin 0.3s ease-in 0s;
+    }
+    .onoffswitch-inner:before, .onoffswitch-inner:after {
+        display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+        font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+        box-sizing: border-box;
+    }
+    .onoffswitch-inner:before {
+        content: "Ativado";
+        padding-left: 10px;
+        background-color: #34A7C1; color: #FFFFFF;
+    }
+    .onoffswitch-inner:after {
+        content: "Desativado";
+        padding-right: 10px;
+        background-color: #EEEEEE; color: #999999;
+        text-align: right;
+    }
+    .onoffswitch-switch {
+        display: block; width: 18px; margin: 6px;
+        background: #FFFFFF;
+        position: absolute; top: 0; bottom: 0;
+        right: 86px;
+        border: 2px solid #999999; border-radius: 20px;
+        transition: all 0.3s ease-in 0s; 
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+        margin-left: 0;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+        right: 0px; 
+    }
