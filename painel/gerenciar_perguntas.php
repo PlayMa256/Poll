@@ -13,7 +13,7 @@
 	<title>Gerenciar Perguntas</title>
 	<script type="text/javascript">
 		$(function(){
-			$('.onoffswitch-checkbox').click(function() { 
+			$('.ch').click(function() { 
 			    $.post(
 			    	"../func/change_status.php",
 			    	{id_pergunta: $(this).val()},
@@ -55,11 +55,10 @@
 						while($result = $resultados->fetch(PDO::FETCH_ASSOC)){			
 						?>
 						<tr>
-							<td><?php echo $result['titulo'];?></td>
-							<td><a href="?acao=remover&id_pergunta=<?php echo $result['id'];?>">Remover pergunta</a></td>
-							<td><a href="editar.php?id_pergunta=<?php echo $result['id'];?>">Editar pergunta</a></td>
+							<td><a href="editar.php?id_pergunta=<?php echo $result['id'];?>"><?php echo $result['titulo'];?></a></td>
+							<td><a href="?acao=remover&id_pergunta=<?php echo $result['id'];?>"><span class="glyphicon glyphicon-trash"></span></a></td>
 							<td>
-								<input data-toggle="toggle" data-on="Ativo" data-off="Inativo" value="<?php echo $result['id']."|".$result['status'];?>" type="checkbox">
+								<input data-toggle="toggle" data-on="Ativo" data-off="Inativo" value="<?php echo $result['id']."|".$result['status'];?>" class="ch checkid<?php echo $result['id'];?>" type="checkbox" <?php echo ($result['status'] == 1) ? "checked" : "";?>>
     						</td>
 						</tr>
 					<?php		

@@ -112,3 +112,6 @@ width: 450px;
     .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
         right: 0px; 
     }
+    .col-md-12 form input[type="text"]{
+        width:300px;
+    }

@@ -17,27 +17,31 @@
 		<div class="row">
 			<div class="col-md-12">
 			<form action="" method="post">
+			<legend>Editar Pergunta</legend>
 				<?php
 					$perguntaid = (isset($_GET['id_pergunta'])) ? $_GET['id_pergunta'] : null;
 					$pdoVar = new PDO("mysql:host=$endereco;dbname=$banco", $usuario, $senha);
 					$query = $pdoVar->query("SELECT * FROM perguntas WHERE id = $perguntaid");
 					while($resultado = $query->fetch(PDO::FETCH_ASSOC)){
 						echo '<label for="">
-								<span>Pergunta: </span>
+								<span>Pergunta</span>
 									<input type="text" name="pergunta" value="'.$resultado['titulo'].'" />
 								</label>';
+								echo '<br/>';
 						if($resultado['status'] == 0){
-							echo '<label> <input type="radio" value="0" name="status" checked="checked" />Desativado</label>';
-							echo '<label> <input type="radio" value="1" name="status" />Ativado</label>';
+							echo '<label> <input type="radio" value="1" name="status" />Ativado</label> ';
+							echo '<label> <input type="radio" value="0" name="status" checked="checked" />Desativado </label> ';
+							
 						}else{
-							echo '<label> <input type="radio" value="0" name="status"/>Desativado</label>';
-							echo '<label> <input type="radio" value="1" name="status"  checked="checked" />Ativado</label>';
+							echo '<label> <input type="radio" value="1" name="status"  checked="checked" />Ativado</label> ';
+							echo '<label> <input type="radio" value="0" name="status"/>Desativado </label> ';
+							
 						}
 					}
 				?>
 				
 				<div id="pergunta-extra"></div>
-				<input type="submit" value="Cadastrar" />
+				<input type="submit" class="btn btn-default"value="Cadastrar" />
 				<input type="hidden" name="acao" value="enviar" />
 			</form>
 				<?php if(isset($_POST['acao']) && $_POST['acao'] == 'enviar'){

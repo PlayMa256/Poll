@@ -1,4 +1,4 @@
-<?php include '../config/config.php';include_once "../classes/perguntas.php";include_once "../classes/Connection.php";?>
+<?php include_once "../classes/autoload.php";?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -23,7 +23,7 @@
 						<input type="text" name="pergunta" />
 					</label>
 					<div id="pergunta-extra"></div>
-					<input type="submit" value="Cadastrar" />
+					<input type="submit" class="btn btn-default" value="Cadastrar" />
 					<input type="hidden" name="acao" value="enviar" />
 				</form>
 				<?php if(isset($_POST['acao']) && $_POST['acao'] == 'enviar'){
