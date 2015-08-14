@@ -13,25 +13,11 @@
 	<title>Gerenciar Perguntas</title>
 	<script type="text/javascript">
 		$(function(){
-			$('.ch').click(function() { 
-			    $.post(
-			    	"../func/change_status.php",
-			    	{id_pergunta: $(this).val()},
-			    	function(data){
-			    		// if(data == 1){
-			    		// 	//alterar para verdadeiro
-			    		// 	$(this).prop('checked', true);
-			    		// }else{
-			    		// 	$(this).prop('checked', false);
-			    		// }
-			    		console.log(data);
-			    	}		
-			    );
-			});
-		// $("#myonoffswitch").click(function(){
-		// 	console.log(this.value);
-		// });
-
+			$('.chbox').change(function() {
+     			 $.post("../func/change_status.php", {pergunta : $(this).val()}, function(data){
+     			 	console.log(data);
+     			 });
+   			 })
 		});
 
 	</script>
@@ -58,7 +44,13 @@
 							<td><a href="editar.php?id_pergunta=<?php echo $result['id'];?>"><?php echo $result['titulo'];?></a></td>
 							<td><a href="?acao=remover&id_pergunta=<?php echo $result['id'];?>"><span class="glyphicon glyphicon-trash"></span></a></td>
 							<td>
-								<input data-toggle="toggle" data-on="Ativo" data-off="Inativo" value="<?php echo $result['id']."|".$result['status'];?>" class="ch checkid<?php echo $result['id'];?>" type="checkbox" <?php echo ($result['status'] == 1) ? "checked" : "";?>>
+								<input data-toggle="toggle" data-on="Ativo" data-off="Inativo" value="<?php echo $result['id']."|".$result['status'];?>" class="chbox" type="checkbox" <?php 
+									if($result['status'] == 1){
+										echo 'checked';
+									}elseif($result['status'] == 0){
+										echo '';
+									}
+								?>>
     						</td>
 						</tr>
 					<?php		

@@ -1,6 +1,6 @@
 <?php
 	include_once "../classes/autoload.php";
-	$pergunta_idAndStatus = $_POST['id_pergunta'];
+	$pergunta_idAndStatus = $_POST['pergunta'];
 	$explode = explode("|", $pergunta_idAndStatus);
 	$id = $explode[0];
 	$status = $explode[1];
