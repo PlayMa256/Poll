@@ -4,13 +4,17 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<script src="../js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../js/data_tables.js"></script>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<script src="../js/bootstrap.min.js"></script>
-	<link href="../css/bootstrap-toggle.min.css" rel="stylesheet">
-	<script src="../js/bootstrap-toggle.min.js"></script>
-	
-	<link rel="stylesheet" href="../css/painel.css" />
+	<link rel="stylesheet" href="../css/data_tables.css" />
+		<link rel="stylesheet" href="../css/painel.css" />
+	<script>
+		$(document).ready(function() {
+		    $('#minhatablea').DataTable();
+		} );
+	</script>
 	<title></title>
 
 </head>
@@ -21,11 +25,11 @@
 			<div class="col-md-12">
 				<div id="conteudodentro">
 					<h3>Consultar Resultados</h3>
-					<table class="table table-bordered tabela">
-					<tr>
+					<table class="tabela" id="minhatablea">
+					<thead>
 						<th>Ticket</th>
 						<th>A&ccedil;&atilde;o</th>
-					</tr>
+					</thead>
 						<?php 
 							$pdoVar = new PDO("mysql:host=$endereco;dbname=$banco", $usuario, $senha);
 							$query = $pdoVar->query("SELECT id_ticket FROM resultados");
