@@ -39,7 +39,7 @@
 					<h2 class="title-section">Chamado <?php echo $ticket;?></h2>
 					<div class="infos">
 						<?php
-							$query = $pdoVarGlpi->prepare("SELECT name FROM glpi_users WHERE id = (SELECT DISTINCT users_id FROM glpi_tickets_users WHERE tickets_id = $ticket)");
+							$query = $pdoVarGlpi->prepare("SELECT name FROM ( glpi_users INNER JOIN glpi_tickets_users WHERE glpi_users.id = glpi_tickets_users = users_id) WHERE tickets_id = $ticket");
 							$query->execute();
 							while($res = $query->fetch(PDO::FETCH_ASSOC)){
 							$TecnicoResponsavel = $res['name'];
