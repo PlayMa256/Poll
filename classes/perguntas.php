@@ -8,7 +8,7 @@ class Pergunta{
     private $columns;
 
     // Pass it to the constructor
-    public function __construct($titulo, $status, $con){
+    public function __construct($titulo="", $status="", $con){
         // Set the property
         $this->connection = $con;
         $this->title = $titulo;
@@ -76,7 +76,14 @@ class Pergunta{
             array_push($results, $res['titulo']);
         }
         return $results;
-
+    }
+    public function get_status($id){
+        $db = $this->connection;
+        $query = $db->prepare("SELECT status FROM perguntas WHERE id = ?");
+        $query->bindParam(1, $id);
+        $query->execute();
+        $results = $query->fetch(PDO::FETCH_ASSOC);
+        return $results['status'];
 
     }
         

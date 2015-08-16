@@ -55,63 +55,26 @@ width: 450px;
 	font-weight: normal;
 	padding:3px;
 }
-.tabela, .alerta{
-  margin: 0 auto !important;
-  float: none !important;
-
+#conteudodentro{
+    max-width: 1024px;
+    margin: 0 auto;
 }
-.tabela{
-	max-width:1024px;
+#conteudodentro legend{
+    max-width: 500px;
 }
-.alerta{
-	max-width: 300px;
-	margin-bottom: 10px;
+#conteudodentro h3{
+    max-width: 300px;
+    
 }
-		    .onoffswitch {
-        position: relative; width: 114px;
-        -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-    }
-    .onoffswitch-checkbox {
-        display: none;
-    }
-    .onoffswitch-label {
-        display: block; overflow: hidden; cursor: pointer;
-        border: 2px solid #999999; border-radius: 20px;
-    }
-    .onoffswitch-inner {
-        display: block; width: 200%; margin-left: -100%;
-        transition: margin 0.3s ease-in 0s;
-    }
-    .onoffswitch-inner:before, .onoffswitch-inner:after {
-        display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
-        font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
-        box-sizing: border-box;
-    }
-    .onoffswitch-inner:before {
-        content: "Ativado";
-        padding-left: 10px;
-        background-color: #34A7C1; color: #FFFFFF;
-    }
-    .onoffswitch-inner:after {
-        content: "Desativado";
-        padding-right: 10px;
-        background-color: #EEEEEE; color: #999999;
-        text-align: right;
-    }
-    .onoffswitch-switch {
-        display: block; width: 18px; margin: 6px;
-        background: #FFFFFF;
-        position: absolute; top: 0; bottom: 0;
-        right: 86px;
-        border: 2px solid #999999; border-radius: 20px;
-        transition: all 0.3s ease-in 0s; 
-    }
-    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-        margin-left: 0;
-    }
-    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-        right: 0px; 
-    }
-    .col-md-12 form input[type="text"]{
-        width:300px;
-    }
+#conteudodentro .abrir{
+display: block;
+    font-size: 13pt;
+    left: 1007px;
+    position: relative;
+    top: -29px;
+    width:10px;
+}
+.modal-body .env{
+    display: block;
+    margin-top:10px;
+}

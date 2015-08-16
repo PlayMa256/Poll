@@ -3,9 +3,11 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="../js/jquery-2.1.4.min.js"></script>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<script src="../js/bootstrap.min.js"></script>
+	<link href="../css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="../js/bootstrap-toggle.min.js"></script>
 	
 	<link rel="stylesheet" href="../css/painel.css" />
 	<title>Cadastrar Perguntas</title>
@@ -16,6 +18,7 @@
 	<div class="content-fluid conteudo">
 		<div class="row">
 			<div class="col-md-12">
+
 				<form action="" method="post">
 				<legend>Cadastrar Perguntas</legend>
 					<label for="">
