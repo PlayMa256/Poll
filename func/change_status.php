@@ -5,22 +5,17 @@
 	$pdoVar = new PDO("mysql:host=$endereco;dbname=$banco", $usuario, $senha);
 	$getStatus = $pdoVar->prepare("SELECT status FROM perguntas WHERE id = ?");
 	$getStatus->bindParam(1, $pergunta);
-	
-
-	// if($status == 1){
-	// 	$query = $pdoVar->prepare("UPDATE perguntas SET status = 0 WHERE id = ?");
-	// 	$query->bindParam(1, $id);
-	// 	if($query->execute() > 0){
-	// 		echo "0";
-	// 	}else{
-	// 		echo "1";
-	// 	}
-	// }else{
-	// 	$query = $pdoVar->prepare("UPDATE perguntas SET status = 1 WHERE id = ?");
-	// 	$query->bindParam(1, $id);
-	// 	if($query->execute() > 0){
-	// 		echo "1";
-	// 	}else{
-	// 		echo "0";
-	// 	}
-	// }
+	$getStatus->execute();
+	while($resStatus = $getStatus->fetch(PDO::FETCH_ASSOC)){
+		$status = $resStatus['status'];
+		$newStats = 0;
+		if($status == 0){
+			$newStats = 1;
+		}elseif ($status == 1) {
+			$newStats = 0;
+		}
+		$toggleStatus = $pdoVar->prepare("UPDATE perguntas SET status = ? WHERE id = ?");
+		$toggleStatus->bindParam(1, $newStats);
+		$toggleStatus->bindParam(2, $pergunta);
+		$toggleStatus->execute();
+	}

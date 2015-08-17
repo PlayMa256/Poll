@@ -14,7 +14,7 @@
 		$(function(){
 			$('.chbox').change(function() {
      			 $.post("../func/change_status.php", {pergunta : $(this).val()}, function(data){
-     			 	console.log(data);
+     			 	//console.log(data);
      			 });
    			 });
 			$(".env").click(function(){
