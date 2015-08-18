@@ -11,6 +11,7 @@
 	padding:5px;
 	width: calc(100% - 10px);
 	display: block;
+	text-align: center;
 }
 .explicacao{
 	background: #D8E4BC;
@@ -21,17 +22,25 @@
 	margin-bottom: 12px;
 }
 .perg span{
-	font-weight: bold;
-	font-size:12pt;
-	margin-right:10px;
-	width:250px;
-	display: block;
-	float:left;
-
-
+	clear: both;
+    float: left;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-right: 10px;
+    width: 500px;
+    margin-bottom: 5px;
 }
 .perg{
-	margin-bottom:10px;
+	margin-bottom: 10px;
+}
+/*Toma conta de todas as partes de alternativas*/
+.wrapper-altern{
+	hight:auto;
+	min-height: 200px;
+}
+/*Toma conta das labels de todos os radio buttons*/
+.envolucro{
+	float:right;
 }
 .perg,.infos,.classificacao{
 	padding-left:10px;

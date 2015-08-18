@@ -41,10 +41,14 @@ class Pergunta{
         while($result = $query->fetch(PDO::FETCH_ASSOC)){
             
             echo '<div class="perg">';
+
             echo '<span>'.$i.') '.$result['titulo'].'*</span>';
+
+            echo '<div class="envolucro">';
             for($k=0;$k<=10;$k++){
                echo '<label><input type="radio" name="perg'.$result['id'].'" value="'.$k.'" id="">'.$k.'</label>';
             }
+            echo '</div>';
 
             echo '</div>';
             $i++;

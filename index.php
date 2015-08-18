@@ -42,11 +42,17 @@
 							//$query = $pdoVarGlpi->prepare("SELECT name FROM ( glpi_users INNER JOIN glpi_tickets_users ON glpi_users.id = glpi_tickets_users = users_id) WHERE tickets_id = $ticket");
 							$query = $pdoVarGlpi->prepare("SELECT name FROM glpi_users WHERE id IN (SELECT users_id FROM glpi_tickets_users WHERE tickets_id = $ticket)");
 							$number = $query->execute();
+							$TecnicoResponsavel = array();
 							while($res = $query->fetch(PDO::FETCH_ASSOC)){
-							$TecnicoResponsavel = ($number > 1) ? $res['name'].", " : $res['name'];
+								$TecnicoResponsavel[] = $res['name'];
+							}
 						?>
-						<span><strong>T&eacute;cnico(s): </strong> <?php echo $TecnicoResponsavel;?></span>
-						<?php }?>
+						<span><strong>T&eacute;cnico(s): </strong> 
+						<?php 
+						//pequenao hack para conseguir inserir , depois de todos os tecnicos sem sobrar uma no final.
+						$var = implode(", ", array_values($TecnicoResponsavel)); echo $var;?>
+						</span>
+						
 						<span><strong>Assunto:  </strong> <?php echo utf8_encode($resultado['name']); ?></span>
 						<span><strong>Data de Abertura:  </strong> <?php echo date("d/m/Y", strtotime($resultado['date'])); ?></span>
 						<span><strong>Data de Vencimento: </strong> <?php echo date("d/m/Y", strtotime($resultado['closedate'])); ?></span>
@@ -60,11 +66,13 @@
 						Pontue sua satisfa&ccedil;&atilde;o em rela&ccedil;&atilde;o aos itens abaixo. Na escala, 0 (Zero) significa que voc&ecirc; est&aacute; totalmente insatisfeito
 						e 10 (Dez) significa que voc&ecirc; est&aacute; totalmente satisfeito.
 					</div>
+					<div class="wrapper-altern">
 					<?php
 						$pdoVar = new PDO("mysql:host=$endereco;dbname=$banco", $usuario, $senha);
 						$pergunta = new Pergunta("", "", $pdoVar);
 						$pergunta->montar_perguntas($ticket);
 					?>
+					</div>
 					<h2 class="title-section">Coment&aacute;rios</h2>
 					<div class="classificacao">
 						<textarea name="comentario" id="" cols="30" rows="10"></textarea><br/>
