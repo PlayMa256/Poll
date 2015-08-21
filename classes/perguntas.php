@@ -27,7 +27,7 @@ class Pergunta{
         	return false;
         }     
     }
-	public function trazer_title($id){
+    public function trazer_title($id){
 		$prepare = $this->connection->prepare("SELECT titulo FROM perguntas WHERE id = ?");
 		$prepare->bindParam(1, $id);
 		$prepare->execute();

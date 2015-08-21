@@ -7,8 +7,10 @@
 	<title>About-me</title>
 </head>
 <body>
-	<div class="content">
-		<h1>Feito por Matheus Gon&ccedil;alves da Silva</h1>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h1>Feito por Matheus Gon&ccedil;alves da Silva</h1>
+		</div>
 		<p>Formas de contato</p>
 		<ul>
 			<li>matheus.g.silva@hotmail.com</li>
