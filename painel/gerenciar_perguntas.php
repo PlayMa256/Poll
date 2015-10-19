@@ -23,6 +23,7 @@
 						$('.modal-body').append("<div class=\"isa_success\">Cadastrado com sucesso</div>");
 						setTimeout(function() {
 							$('#myModal').modal('hide');
+							$('#title').val('');
 							location.reload();
 						}, 3000);
 					}else{
@@ -90,23 +91,23 @@
 							</tr>
 						<?php		
 							}
-
 							if(isset($_GET['acao']) && $_GET['acao'] == 'remover'){
 								$pergunta_id = (isset($_GET['id_pergunta'])) ? $_GET['id_pergunta'] : null;
 
 								$pdoVar = new PDO("mysql:host=$endereco;dbname=$banco", $usuario, $senha);
 								$pergunta = new Pergunta("", "", $pdoVar);
-								if($pergunta->remover($pergunta_id)){
-									$assets = new assets();
-									$assets->alert_sucesso("Apagado com sucesso");
-									sleep(2000);
-									echo '<script>location.reload();</script>';
-								}else{
-									$assets->alert_warning("Erro ao apagar");
+								$assets = new assets();
+									if(!$pergunta->verificaPergEmResultados($pergunta_id)){
+										$assets->alert_warning("Pergunta vinculada a resposta, n&atilde;o pode ser apagada");
+									}else{
+									if($pergunta->remover($pergunta_id)){
+										$assets->alert_sucesso("Apagado com sucesso");
+										sleep(3);
+										echo '<script>location.href="gerenciar_perguntas.php";</script>';
+									}else{
+										$assets->alert_warning("Erro ao apagar");
+									}
 								}
-							}
-							if(isset($_GET['acao']) && $_GET['acao'] == 'status'){
-
 							}
 						?>
 

@@ -28,5 +28,13 @@ class assets{
 								</button>
 							</div>';
 	}
+	public function alert_danger($mensagem){
+		echo '<div class="alert alert-danger alert-dismissible alerta fade in" role="alert">
+								'.$mensagem.'
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								  <span aria-hidden="true">&times;</span>
+								</button>
+							</div>';
+	}
 	
 }

@@ -24,9 +24,9 @@ class resultados{
         $query->execute();
         $results = $query->rowCount();
         return $results;
-
-
     }
+
+
     /**
      * Gets the value of id_pergunta.
      *

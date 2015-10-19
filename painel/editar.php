@@ -21,6 +21,15 @@
 				<form action="" method="post">
 				<legend>Editar Pergunta</legend>
 					<?php
+					
+						$pdoVar = new PDO("mysql:host=$endereco;dbname=$banco", $usuario, $senha);
+								$pergunta = new Pergunta("", "", $pdoVar);
+								$assets = new assets();
+									if(!$pergunta->verificaPergEmResultados($pergunta_id)){
+										$assets->alert_warning("Pergunta vinculada a resposta, n&atilde;o pode ser alterada");
+										exit();
+									}
+																
 						$perguntaid = (isset($_GET['id_pergunta'])) ? $_GET['id_pergunta'] : null;
 						$pdoVar = new PDO("mysql:host=$endereco;dbname=$banco", $usuario, $senha);
 						$query = $pdoVar->query("SELECT * FROM perguntas WHERE id = $perguntaid");

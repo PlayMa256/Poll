@@ -23,33 +23,41 @@
 
 </head>
 <body>
-		<?php include ("menu.php");?>
-	<div class="content-fluid conteudo">
+	<?php include ("menu.php");?>
+	<div class="content conteudo">
 		<div class="row">
 			<div class="col-md-12">
-				<div id="conteudodentro">
-					<h3>Consultar Resultados</h3>
-					<table class="tabela" id="minhatablea">
-					<thead>
-						<th>Ticket</th>
-						<th>A&ccedil;&atilde;o</th>
-					</thead>
-						<?php 
-							$pdoVar = new PDO("mysql:host=$endereco;dbname=$banco", $usuario, $senha);
-							$query = $pdoVar->query("SELECT id_ticket FROM resultados");
-							while($resultado = $query->fetch(PDO::FETCH_ASSOC)){
-								echo '<tr><td>'.$resultado['id_ticket'].'</td>
-								<td><a href="ver_respostas.php?id_ticket='.$resultado['id_ticket'].'">Ver resposta</a></td>
-								</tr>';
-							}
-						?>
+				<?php
+					$arquivo2 = "arquivo.txt";
+					$dados = file_get_contents($arquivo2);
 
-					
+					echo "<h1>Tempo Definido: $dados</h1>";
 
-					</table>	
-				</div>
-				
-			</div>	
+				?>
+				<form method="post">
+					<legend>Definir numero de dias</legend>
+					<label>
+						<span>N&uacute;mero de dias</span>
+						<input type="text" name="dias" />
+					</label>
+					<input type="submit" value="Enviar" />
+					<input type="hidden" name="acao" value="enviar" />
+				</form>					
+				<?php if(isset($_POST['acao']) && $_POST['acao'] == 'enviar'){
+					$arquivo = "arquivo.txt";
+					$string = trim($_POST['dias']);
+					if(file_put_contents($arquivo, $string)){
+						$assert = new assets();
+						$assert->sucesso("Arquivo editado");
+						echo '<script>location.href="definir_dias.php";</script>';
+					}
+
+
+				}
+
+
+				?>
+			</div>
 		</div>
 	</div>
 </body>

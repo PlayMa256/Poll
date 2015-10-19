@@ -5,10 +5,10 @@
 	$dataInicial = $_POST['dataInicio'];
 	$dataFinal = $_POST['dataFinal'];
 
-	$explode1 = explode("/", $dataInicial);
-	$explode2 = explode("/", $dataFinal);
-	$dataInicio = $explode1[2]."-".$explode1[1]."-".$explode1[0];
-	$dataFim = $explode2[2]."-".$explode2[1]."-".$explode2[0];
+	// $explode1 = explode("/", $dataInicial);
+	// $explode2 = explode("/", $dataFinal);
+	// $dataInicio = $explode1[2]."-".$explode1[1]."-".$explode1[0];
+	// $dataFim = $explode2[2]."-".$explode2[1]."-".$explode2[0];
 	
 
 	//handle the database connectivity 
@@ -26,11 +26,11 @@
 	}
 	 
 	header("Content-type: text/csv");
-	header("Content-Disposition: attachment; filename=products-data.csv");
+	header("Content-Disposition: attachment; filename=pesquisa.txt");
 	header("Pragma: no-cache");
 	header("Expires: 0");
 	 
-	$query = "SELECT * FROM resultados WHERE data BETWEEN '$dataInicio' AND '$dataFim'";
+	$query = "SELECT * FROM resultados WHERE referencia BETWEEN '$dataInicial' AND '$dataFinal'";
 	try {
 	       $statement = $db->prepare($query);
 	       $statement->execute();
@@ -40,24 +40,33 @@
 	       $content = '';
 	       $title = '';
 	       foreach ($results as $rs){
-	           $content .= stripslashes($rs["id"]). ',';
-	           $content .= stripslashes($rs["id_ticket"]). ',';
-	           $content .= stripslashes($rs["comentario"]). ',';
-	           $content .= stripslashes($rs["classificacao"]). ',';
-	           $content .= stripslashes($rs["data"]). ',';
-	           $content .= stripslashes($rs["perguntas"]). ',';
-	           $content .= stripslashes($rs["resposta"]). ',';
-	           $content .= "\n";
+	           $perguntas = $rs['perguntas'];
+	           $explodePerguntas = explode("|", $perguntas);
+	           foreach($explodePerguntas as $k=>$v){
+	           		$queryTitulo = $db->prepare("SELECT titulo FROM perguntas WHERE id = ?");
+	           		$queryTitulo->bindParam(1, $v);
+	           		$queryTitulo->execute();
+	           		while($resultado = $queryTitulo->fetch(PDO::FETCH_ASSOC)){
+	           			$titulo = $resultado['titulo'];
+	           			$content .= stripcslashes($rs['id']).",";
+	           			$content .= stripcslashes($rs['id_ticket']).",";
+	           			$content .= stripcslashes($titulo).",";
+	           			$explodeRespostas = explode("|", $rs['resposta']);
+	           			$content .= stripcslashes($explodeRespostas[$k]).",";
+	           			$content .= stripcslashes(ucfirst(utf8_encode($rs['comentario']))).",";
+	           			$content .= stripcslashes(ucfirst(utf8_decode($rs['classificacao']))).",";
+	           			$content .= stripcslashes($rs['referencia']).",";
+	           			$content .= stripcslashes(date("d-m-Y", strtotime($rs['data'])))."\n";
+	           		}
+
+	           }
 	        }
-	 
-	        $title .= "id,id_ticket,comentario,classificacao,data,perguntas,res"."\n";
+	 		$title .= "id,id_ticket,pergunta,resposta,comentario,classificao,referencia,data\n";
 	        echo $title;
 	        echo $content;
 	 
 	   } catch (PDOException $e) {
 	       $error_message = $e->getMessage();
-	       global $app_path;
-	       include 'errors/db_error.php';
 	       exit;
 	 }
 

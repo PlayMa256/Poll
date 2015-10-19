@@ -46,7 +46,7 @@ class Pergunta{
 
             echo '<div class="envolucro">';
             for($k=0;$k<=10;$k++){
-               echo '<label><input type="radio" name="perg'.$result['id'].'" value="'.$k.'" id="">'.$k.'</label>';
+               echo '<label><input type="radio" class="perg perg'.$i.'" name="perg'.$result['id'].'" value="'.$k.'" id="">'.$k.'</label>';
             }
             echo '</div>';
 
@@ -64,6 +64,7 @@ class Pergunta{
         }
     }
     public function remover($id_pergunta){
+
         $query = $this->connection->prepare("DELETE FROM perguntas WHERE id = ?");
         $query->bindParam(1, $id_pergunta);
         if($query->execute() > 0){
@@ -89,6 +90,23 @@ class Pergunta{
         $results = $query->fetch(PDO::FETCH_ASSOC);
         return $results['status'];
 
+    }
+    public function verificaPergEmResultados($id_pergunta){
+        $db= $this->connection;
+        $query = $db->prepare("SELECT * FROM resultados WHERE perguntas LIKE '%$id_pergunta|%' or perguntas LIKE '%|$id_pergunta%' or perguntas LIKE '%$id_pergunta|%' ");
+        $query->execute();
+        if($query->rowCount() >= 1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    public function numberActiveQuestions(){
+        $query = $this->connection->prepare("SELECT COUNT(id) as quantidade FROM perguntas WHERE status = 1");
+        $query->execute();
+        while($result = $query->fetch(PDO::FETCH_ASSOC)){
+            return $result['quantidade'];
+        }
     }
         
     /**

@@ -1,0 +1,5 @@
+AuthUserFile /etc/htpasswd/.htpasswd 
+AuthGroupFile /dev/null 
+AuthName Restrito 
+AuthType Basic 
+require valid-user

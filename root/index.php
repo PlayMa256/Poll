@@ -1,4 +1,4 @@
-<?php include_once "classes/autoload.php";?>
+<?php include_once "classes/autoload.php";error_reporting(0);?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -34,18 +34,21 @@
 						echo '<div class="isa_error">Nenhuma pesquisa encontrada</div>';
 						die();
 					}
-					$data_limite = file_get_contents("painelçarquivo.txt");
-					$Pesquisa = new Pesquisa();
-					//var_dump($Pesquisa->verifica_fechamento($pdoVarGlpi, $ticket, $data_limite));
-					echo "DATA LIMITE $data_limite";
-					if(!$Pesquisa->isFechado($pdoVarGlpi, $ticket)){
-						$assets->warning("Ticket ainda não está fechado.");
+					$data_limite = file_get_contents("../arquivo.txt");
+					$verifica_fechamento = $pdoVarGlpi->prepare("SELECT * from glpi_tickets WHERE id = $ticket and status = 6 and $data < strtotime(closedate. ' + $data_limite days')");
+					$verifica_fechamento->execute();
+
+					if($verifica_fechamento->rowCount() <= 0){
+						$assets->warning("Ticket não é velho o suficiente");
 						die();
+
 					}
+
 
 					$query = $pdoVarGlpi->prepare("SELECT * FROM glpi_tickets WHERE id = $ticket and status = 6");
 					$query->execute();
 					while($resultado = $query->fetch(PDO::FETCH_ASSOC)){
+
 				?>
 				<!-- Informacoes -->
 					<div class="infos">
@@ -151,30 +154,22 @@
 
 				$respostasDadas = implode("|", array_values($Respostas));
 				$perguntasRespondidas = implode("|", array_keys($Respostas));
-				$pdoVarGlpi = new PDO("mysql:host=$endereco;dbname=$bancoGLPI", $usuario, $senha);
-				
-				$insert = $pergunta->connection->prepare("INSERT INTO resultados (id_ticket, resposta, perguntas, comentario, classificacao, data, referencia) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+				$insert = $pergunta->connection->prepare("INSERT INTO resultados (id_ticket, resposta, perguntas, comentario, classificacao, data) VALUES (?, ?, ?, ?, ?, ?)");
 				$insert->bindParam(1, $ticket);
 				$insert->bindParam(2, $respostasDadas);
 				$insert->bindParam(3, $perguntasRespondidas);
 				$insert->bindParam(4, $comment);
 				$insert->bindParam(5, $comment_type);
 				$insert->bindParam(6, $data);
-
-				$pesquisa = new Pesquisa();
-				$ref = $pesquisa->getCloseDate($pdoVarGlpi, $ticket);
-				$dateRef = date("Y-m", strtotime($ref));
-
-				$insert->bindParam(7, $dateRef);
 				if($insert->execute() > 0){
-					$assets->alert_sucesso("Pesquisa realizada com sucesso!");
+					$assets->sucesso("Pesquisa realizada com sucesso!");
 					die();
-					
 				}else{
-					$assets->alert_warning("Problema ao completar pesquisa");
+					$assets->error("Problema ao completar pesquisa");
 				}
-
 			}
+			
 		}
 		?>
 		</div>

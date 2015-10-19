@@ -38,41 +38,54 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Repostas do ticket <?php echo $_GET['id_ticket']; ?></h3>
-				<table class="table table-bordered tabela ">
-				
-						<?php
-							$pdoVar = new PDO("mysql:host=$endereco;dbname=$banco", $usuario, $senha);
-							$query = $pdoVar->prepare("SELECT * FROM resultados WHERE id_ticket = ?");
-							$query->bindParam(1, $_GET['id_ticket']);
-							$query->execute();
-							while($resultado = $query->fetch(PDO::FETCH_ASSOC)){
-								$perguntas = $resultado['perguntas'];
-								$perguntaExplode = explode("|", $perguntas);
-								echo "<tr>";
-								foreach($perguntaExplode as $p){
-									$pergunta = new Pergunta("", "", $pdoVar);
-									$titulo = $pergunta->trazer_title($p);
+				<div id="conteudodentro">
+					<h3>Respostas do ticket <?php echo $_GET['id_ticket']; ?></h3>
+					<table class="table table-bordered tabela ">
+					
+							<?php
+								$pdoVar = new PDO("mysql:host=$endereco;dbname=$banco", $usuario, $senha);
+								$query = $pdoVar->prepare("SELECT * FROM resultados WHERE id_ticket = ?");
+								$query->bindParam(1, $_GET['id_ticket']);
+								$query->execute();
+								while($resultado = $query->fetch(PDO::FETCH_ASSOC)){
+									$perguntas = $resultado['perguntas'];
+									$data = date("d/m/Y", strtotime($resultado['data']));
+									$perguntaExplode = explode("|", $perguntas);
+									$comentario = $resultado['comentario'];
+									$classificacao = $resultado['classificacao'];
+									$referencia = $resultado['referencia'];
+									echo "<tr>";
+									foreach($perguntaExplode as $p){
+										$pergunta = new Pergunta("", "", $pdoVar);
+										$titulo = $pergunta->trazer_title($p);
 
+										echo "<th>$titulo</th>";
+									}
+										echo "<th>Comentário</th>";
+										echo "<th>Classifica&ccedil;&atilde;o</th>";
+										echo "<th>Refer&ecirc;ncia</th>";
+										echo "<th>Data</th>";
+									echo "</tr>";
+									$resultados = $resultado['resposta'];
+									$respostaExplode = explode("|", $resultados);
+									echo "<tr>";
+									foreach($respostaExplode as $r){
+										echo "<td>$r</td>";
+									}
+									echo "<td>$comentario</td>";
+									echo "<td>$classificacao</td>";
+									echo "<td>$referencia</td>";
+									echo "<td>$data</td>";
+									echo "</tr>";
 
-									echo "<th>$titulo</th>";
 								}
-								echo "</tr>";
-								$resultados = $resultado['resposta'];
-								$respostaExplode = explode("|", $resultados);
-								echo "<tr>";
-								foreach($respostaExplode as $r){
-									echo "<td>$r</td>";
-								}
-								echo "</tr>";
 
-							}
+								
+							?>
+					
 
-							
-						?>
-				
-
-				</table>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
