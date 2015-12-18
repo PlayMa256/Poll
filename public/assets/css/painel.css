@@ -1,0 +1,83 @@
+.navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-nav > li > a{
+    font-family: proxima-nova;
+    font-style: normal;
+    font-weight: 100;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: black;
+}
+.conteudo{
+	padding-left:10px;
+}
+.anuncio{
+	text-align: center;
+	width: 400px;
+	position: relative;
+	left:50%;
+	margin-left:-200px;
+	height: 200px;
+	top:50%;
+}
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+ 
+.isa_info, .isa_success, .isa_warning, .isa_error {
+margin: 10px 0px;
+padding:12px;
+width: 450px;
+}
+.isa_info {
+    color: #00529B;
+    background-color: #BDE5F8;
+    wid
+}
+.isa_success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.isa_warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+.isa_error {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+.isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+    margin:10px 22px;
+    font-size:2em;
+    vertical-align:middle;
+}
+.conteudo span{
+	font-size:15pt;
+	display: block;
+}
+.conteudo input[type="text"]{
+	font-weight: normal;
+	padding:3px;
+}
+#conteudodentro{
+    max-width: 1024px;
+    margin: 0 auto;
+}
+#conteudodentro legend{
+    max-width: 500px;
+}
+#conteudodentro h3{
+    max-width: 300px;
+    
+}
+#conteudodentro .abrir{
+display: block;
+    font-size: 13pt;
+    left: 1007px;
+    position: relative;
+    top: -29px;
+    width:10px;
+}
+.modal-body .env{
+    display: block;
+    margin-top:10px;
+}
+.col-md-12 form input[type="submit"]{
+    margin-top:10px;
+}

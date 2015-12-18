@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Poll
+        psr4_prefix: Poll
+        src_path: app

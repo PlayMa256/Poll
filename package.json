@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "devDependencies": {
+    "angular-material": "^1.0.0",
+    "gulp": "^3.8.8"
+  },
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-material": "^1.0.0",
+    "bootstrap": "^3.3.6",
+    "bootstrap-sass": "^3.0.0",
+    "jquery": "^2.1.4",
+    "laravel-elixir": "^4.0.0"
+  }
+}
