@@ -12,12 +12,22 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/data_tables.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap-toggle.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/painel.css') }}" />
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
     <script src="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0/angular-material.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js"></script>
+
+
+
+    
+
+
+
+
     <script src="{{ URL::asset('assets/js/angular/angularResources.js')}}"></script>
     <script src="{{ URL::asset('assets/js/angular/main.js')}}"></script>
     <script src="{{ URL::asset('assets/js/angular/perguntaController.js')}}"></script>

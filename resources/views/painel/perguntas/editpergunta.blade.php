@@ -3,6 +3,7 @@
     Editar Pergunta
 @stop
 @section('conteudo')
+    <h3>Editar Pergunta - {{$pergunta->titulo}}</h3>
     {!!  Form::model($pergunta, ['route' => ['pergunta.editar', $pergunta->id], 'method' => 'put'])!!}
         <div class="form-group">
             {!!Form::label('titulo', 'Titulo', array('class' => ''))!!}

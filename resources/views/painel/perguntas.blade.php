@@ -22,7 +22,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="perg in perguntas">
-                <td><% perg.titulo %></td>
+                <td><a href="/painel/pergunta/<%perg.id%>/editar/"><% perg.titulo %></a></td>
                 <td><md-switch ng-model="perg.status" class="md-primary" ng-change="onChange(perg.id)"></md-switch></td>
                 <td><a href="/painel/pergunta/<% perg.id %>/remover" class="glyphicon glyphicon-trash "></a></td>
             </tr>

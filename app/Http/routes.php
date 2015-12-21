@@ -23,6 +23,7 @@ Route::group(['prefix'=>'painel'], function(){
         ]);
         //rota usada pelo angular para carregar os dados em json.
         Route::get('perguntas/json/', "PerguntaController@perguntasJson");
+
         Route::get('respostas', "ResultadosController@index");
         Route::get('exportar', "PainelController@exportarPost");
         Route::get('dias', [
@@ -45,7 +46,7 @@ Route::group(['prefix'=>'painel'], function(){
                 Route::put('editar/status', "PerguntaController@editarStatus");
                 Route::get('remover', "PerguntaController@destroy");
         });
-       //Route::get('/resultado/{id}', "ResultadoController@show");
+       Route::get('/resultado/{id}', "ResultadosController@show");
 
 
 });
