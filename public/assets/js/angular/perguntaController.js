@@ -1,6 +1,6 @@
 (function(){
     var app = angular.module('perguntas')
-        .controller('PerguntaController',['$scope', '$http', '$resource', '$rootScope', function($scope, $http, $resource, $rootScope){
+        .controller('PerguntaController',['$scope', '$http', '$resource', '$rootScope', 'perguntaResource', function($scope, $http, $resource, $rootScope, perguntaResource){
             $scope.pergunta = {};
             $scope.perguntas = [];
 
@@ -12,8 +12,6 @@
                 for(k=0;k<$scope.perguntas.length;k++){
                     $scope.perguntas[k].status = ($scope.perguntas[k].status == 1) ? true : false;
                 }
-                console.log($scope.perguntas);
-
             }, function(erro){
                 console.log(erro);
             });
@@ -35,6 +33,12 @@
                     $rootScope.$broadcast('statusPostPergunta', "Adicionado com Sucesso");
                 });
             });
+
+            $scope.onChange = function(perg_id){
+                perguntaResource.update({id: perg_id}, null, function(response){
+                    console.log(response);
+                });
+            };
 
 
         }]);

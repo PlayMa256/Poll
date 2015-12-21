@@ -1,7 +1,7 @@
 @extends('painel.master')
 @section('conteudo')
     <h1>Gerenciamento de Perguntas</h1>
-    @if(Session::has('sucess'))
+    @if(Session::has('success'))
             <div class="alert alert-success">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <p>{{$success}}</p>
@@ -23,8 +23,8 @@
             <tbody>
             <tr ng-repeat="perg in perguntas">
                 <td><% perg.titulo %></td>
-                <td><md-switch ng-model="perg.status" class="md-primary"><%perg.status%></md-switch></td>
-                <td><a href="<% perg.id %>"><% perg.titulo %></a></td>
+                <td><md-switch ng-model="perg.status" class="md-primary" ng-change="onChange(perg.id)"></md-switch></td>
+                <td><a href="/painel/pergunta/<% perg.id %>/remover" class="glyphicon glyphicon-trash "></a></td>
             </tr>
             </tbody>
         </table>

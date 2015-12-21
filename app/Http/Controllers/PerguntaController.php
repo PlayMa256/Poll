@@ -55,6 +55,13 @@ class PerguntaController extends Controller
         }
     }
 
+    public function editarStatus($id){
+        $pergunta = Pergunta::find($id);
+        $pergunta->status = !$pergunta->status;
+        $pergunta->save();
+        return response()->json("ok");
+    }
+
     //chamada apenas para a view.
     public function edit($id)
     {
@@ -67,6 +74,6 @@ class PerguntaController extends Controller
         $pergunta = Pergunta::find($id);
         $pergunta->delete();
         $mensagem = "Pergunta apagada com sucesso";
-        return redirect('/painel/perguntas')->with('sucess', $mensagem);
+        return redirect('/painel/perguntas')->with('success', $mensagem);
     }
 }

@@ -22,7 +22,7 @@
     <script src="{{ URL::asset('assets/js/angular/main.js')}}"></script>
     <script src="{{ URL::asset('assets/js/angular/perguntaController.js')}}"></script>
     <script src="{{ URL::asset('assets/js/angular/dialogController.js')}}"></script>
-    <script src="{{ URL::asset('assets/js/angular/Services/PerguntasService.js')}}"></script>
+    <script src="{{ URL::asset('assets/js/angular/Resources/perguntaResource.js')}}"></script>
 
     <link rel="stylesheet" href="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0/angular-material.css">
     <style type="text/css">

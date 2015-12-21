@@ -21,6 +21,7 @@ Route::group(['prefix'=>'painel'], function(){
                 'uses' => "PerguntaController@perguntasGet",
                 'as' => 'perguntas.main'
         ]);
+        //rota usada pelo angular para carregar os dados em json.
         Route::get('perguntas/json/', "PerguntaController@perguntasJson");
         Route::get('respostas', "ResultadosController@index");
         Route::get('exportar', "PainelController@exportarPost");
@@ -30,19 +31,21 @@ Route::group(['prefix'=>'painel'], function(){
         ]);
 
         Route::post('dias', "PainelController@definirDiasPost");
+        //rota usada pelo angular para gravar os dados da pergunta.
         Route::post('pergunta', "PerguntaController@store");
 
-        //rotas para post
+        //rotas para pergunta
         Route::group(['prefix' => 'pergunta/{id}'], function(){
                 Route::get('editar', "PerguntaController@edit");
+                //rota usada para edição de dados.
                 Route::put('editar', [
                         'as' => 'pergunta.editar',
                         'uses' => 'PerguntaController@editar'
                 ]);
+                Route::put('editar/status', "PerguntaController@editarStatus");
                 Route::get('remover', "PerguntaController@destroy");
         });
        //Route::get('/resultado/{id}', "ResultadoController@show");
 
-        Route::get('/token', "PerguntaController@token");
 
 });
