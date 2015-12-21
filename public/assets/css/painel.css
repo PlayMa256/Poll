@@ -81,3 +81,12 @@ display: block;
 .col-md-12 form input[type="submit"]{
     margin-top:10px;
 }
+.dialogdemoBasicUsage #popupContainer {
+    position: relative; }
+label{
+    font-size:13px;
+}
+.md-button{
+    min-height:20px;
+    line-height:0;
+}

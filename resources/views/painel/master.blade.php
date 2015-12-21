@@ -4,49 +4,31 @@
     <meta charset="UTF-8">
     <title>@yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
-    <script src="{{ URL::asset('assets/js/jquery-2.1.4.min.js')}}"></script>
-    <script src="{{ URL::asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{ URL::asset('assets/js/bootstrap-toggle.min.js')}}"></script>
+
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="{{ URL::asset('assets/js/data_tables.js')}}"></script>
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/data_tables.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap-toggle.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/painel.css') }}" />
+    <script src="/node_modules/angular/angular.min.js"></script>
+    <script src="/node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="/node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="/node_modules/angular-material/angular-material.min.js"></script>
+    <script src="/node_modules/angular-messages/angular-messages.min.js"></script>
+    {{--//verificar se é mesmo necessario.--}}
+    <script src="{{URL::asset('assets/js/assets-cache.js')}}"></script>
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-    <script src="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0/angular-material.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js"></script>
-
-
-
-    
-
-
-
-
+    {{--Dependencias do sistema--}}
     <script src="{{ URL::asset('assets/js/angular/angularResources.js')}}"></script>
     <script src="{{ URL::asset('assets/js/angular/main.js')}}"></script>
     <script src="{{ URL::asset('assets/js/angular/perguntaController.js')}}"></script>
     <script src="{{ URL::asset('assets/js/angular/dialogController.js')}}"></script>
     <script src="{{ URL::asset('assets/js/angular/Resources/perguntaResource.js')}}"></script>
 
-    <link rel="stylesheet" href="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0/angular-material.css">
-    <style type="text/css">
-        .dialogdemoBasicUsage #popupContainer {
-            position: relative; }
-        label{
-            font-size:13px;
-        }
-        .md-button{
-            min-height:20px;
-            line-height:0;
-        }
+    {{--Stylesheets--}}
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/angular-material/angular-material.min.css" />
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/data_tables.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/painel.css') }}" />
 
-    </style>
     @yield('script')
 
 </head>
