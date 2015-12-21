@@ -23,7 +23,7 @@
             <tbody>
             <tr ng-repeat="perg in perguntas">
                 <td><% perg.titulo %></td>
-                <td><md-switch ng-model="perg.status" ng-true-value="'Ativado'" ng-false-value="'Desativado'"><%perg.status%></md-switch></td>
+                <td><md-switch ng-model="perg.status" class="md-primary"><%perg.status%></md-switch></td>
                 <td><a href="<% perg.id %>"><% perg.titulo %></a></td>
             </tr>
             </tbody>
