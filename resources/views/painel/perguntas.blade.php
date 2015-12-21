@@ -14,41 +14,20 @@
         </md-button>
     </div>
 
-    <table class="table table-striped" ng-controller="PerguntaController">
-        <thead>
+        <table class="table table-striped" ng-controller="PerguntaController">
+            <thead>
             <th>T&iacute;tulo</th>
             <th>Status</th>
             <th>Acao</th>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             <tr ng-repeat="perg in perguntas">
                 <td><% perg.titulo %></td>
-                <td><% status %></td>
+                <td><md-switch ng-model="perg.status" ng-true-value="'Ativado'" ng-false-value="'Desativado'"><%perg.status%></md-switch></td>
                 <td><a href="<% perg.id %>"><% perg.titulo %></a></td>
             </tr>
-        </tbody>
-    </table>
-
-    {{--@if($dados->isEmpty())--}}
-        {{--<h4>Não há nenhuma pergunta Cadastrada</h4>--}}
-    {{--@else--}}
-        {{--<table class="table table-striped">--}}
-            {{--<thead>--}}
-
-            {{--</thead>--}}
-            {{--<tbody>--}}
-                {{--@foreach($dados as $dado)--}}
-                {{--<tr>--}}
-                    {{--<td>{{$dado->id}}</td>--}}
-                    {{--<td><a href="/painel/pergunta/{{$dado->id}}/editar">{{$dado->titulo}}</a></td>--}}
-                    {{--<td>montar o switch</td>--}}
-                    {{--<td><a href="/painel/pergunta/{{$dado->id}}/remover"><span class="glyphicon glyphicon-trash"></span></a></td>--}}
-                {{--</tr>--}}
-                {{--@endforeach--}}
-
-            {{--</tbody>--}}
-        {{--</table>--}}
-    {{--@endif--}}
+            </tbody>
+        </table>
     @stop
 @section('title')
     Gerenciar Perguntas

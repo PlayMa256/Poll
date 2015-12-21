@@ -17,8 +17,5 @@
         }
 
     })();
-
-// adding constant into our app
-
     app.constant('CSRF_TOKEN', csrftoken);
 }());

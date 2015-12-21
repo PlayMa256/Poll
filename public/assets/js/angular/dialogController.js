@@ -34,7 +34,8 @@
                     '  <span ng-show="formulario.$submitted && formulario.status.$error.required" class="form-control alert-danger">'+
                     '   Titulo obrigatório'+
                     '</span>'+
-                    '<button type="submit">Submitar</button>'+
+                    '<button type="submit" class="md-primary md-button">Cadastrar</button>'+
+                    '<div ng-show="mensagensSucesso">Pergunta cadastrada com sucesso!</div>'+
                     '</div>'+
                     '</md-dialog-content>'+
                     '</form>'+
@@ -48,7 +49,7 @@
     }]);
 
     //apartir daqui que é pra fazer a edicao do codigo para conseguir mexer dentro do form do dialog.
-    function dialogController($scope, $mdDialog,$rootScope) {
+    function dialogController($scope, $mdDialog,$rootScope, $timeout) {
         //funcoes de controle do dialog.
         $scope.hide = function() {
             $mdDialog.hide();
@@ -60,11 +61,18 @@
         $scope.answer = function(answer) {
             $mdDialog.hide(answer);
         };
+        $scope.mensagensSucesso = false;
 
         $scope.pergunta = {};
-        //enviando essas infos para o controller de perguntas, assim ele pode tratar melhor.
+
         $scope.submit = function(){
             $rootScope.$broadcast('adicionadoPergunta', $scope.pergunta);
+            $scope.$on('statusPostPergunta', function(event, args) {
+                $scope.mensagensSucesso = true;
+                $timeout(function() {
+                    $scope.hide();
+                }, 1000);
+            });
         };
 
     }
